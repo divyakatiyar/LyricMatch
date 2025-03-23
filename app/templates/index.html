@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lyric Match - Song Guessing Game</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <!-- Import Vue.js from CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  {% raw %}
+  <div id="app">
+    <header>
+      <h1>Lyric Match</h1>
+      <p>Guess the song title from the lyrics!</p>
+    </header>
+    
+    <main class="game-container">
+      <div class="lyric-section">
+        <h2>Lyrics</h2>
+        <div class="lyric-display" v-if="lyricSnippet">
+          <p v-for="line in formattedLyrics" class="lyric-line">{{ line }}</p>
+        </div>
+        <div class="lyric-placeholder" v-else>
+          <p>Click the button below to generate lyrics!</p>
+        </div>
+        <button 
+          @click="generateLyrics" 
+          class="btn generate-btn"
+          :disabled="loading"
+        >
+          {{ loading ? 'Loading...' : 'Generate Lyric Snippet' }}
+        </button>
+      </div>
+
+      <div class="guess-section" v-if="lyricSnippet">
+        <h2>Your Guess</h2>
+        <div class="input-group">
+          <input 
+            type="text" 
+            v-model="userGuess" 
+            placeholder="Enter the song title"
+            :disabled="showAnswer"
+            @keyup.enter="checkAnswer"
+          />
+          <button 
+            @click="checkAnswer" 
+            class="btn check-btn"
+            :disabled="!userGuess || showAnswer"
+          >
+            Check Answer
+          </button>
+        </div>
+
+        <div class="result" v-if="showAnswer">
+          <div :class="['answer', isCorrect ? 'correct' : 'incorrect']">
+            <p v-if="isCorrect">
+              <span class="result-icon">✓</span> Correct! The song is "{{ correctTitle }}" by {{ artist }}.
+            </p>
+            <p v-else>
+              <span class="result-icon">✗</span> Incorrect. The song is "{{ correctTitle }}" by {{ artist }}.
+            </p>
+          </div>
+          <button @click="resetGame" class="btn next-btn">Next Song</button>
+        </div>
+      </div>
+    </main>
+    
+    <footer>
+      <p>&copy; 2025 Lyric Match - AI-Powered Song Guessing Game</p>
+    </footer>
+  </div>
+  {% endraw %}
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+:root {
+    --primary-color: #6200ea;
+    --secondary-color: #b388ff;
+    --text-color: #333;
+    --light-bg: #f5f5f5;
+    --white: #ffffff;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+  }
+  
+  #app {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+  
+  .game-container {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .lyric-section, .guess-section {
+    margin-bottom: 2rem;
+  }
+  
+  .lyric-display, .lyric-placeholder {
+    background-color: var(--light-bg);
+    border-radius: 6px;
+    padding: 1.5rem;
+    min-height: 150px;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .lyric-line {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .lyric-placeholder {
+    color: #999;
+    text-align: center;
+    font-style: italic;
+  }
+  
+  .input-group {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  
+  input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+  }
+  
+  input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+  }
+  
+  .btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+  }
+  
+  .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .generate-btn {
+    background-color: var(--primary-color);
+    color: white;
+    width: 100%;
+  }
+  
+  .check-btn {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .next-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    margin-top: 1rem;
+  }
+  
+  .btn:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+  
+  .btn:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+  
+  .result {
+    margin-top: 1.5rem;
+  }
+  
+  .answer {
+    padding: 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  .correct {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: #2e7d32;
+  }
+  
+  .incorrect {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: #c62828;
+  }
+  
+  .result-icon {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+  }
+  
+  footer {
+    text-align: center;
+    margin-top: 1rem;
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
