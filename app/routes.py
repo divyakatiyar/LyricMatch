@@ -18,8 +18,6 @@ from app.models import songs
 import random
 import google.generativeai as genai
 
-# Configure Gemini API
-GOOGLE_API_KEY = "AIzaSyDNJxHXySaFYDHDG8uQBZ9nHqnUZlwBjrk"
 genai.configure(api_key=GOOGLE_API_KEY)
 
 model = genai.GenerativeModel('gemini-1.5-pro-latest')
@@ -27,19 +25,15 @@ model = genai.GenerativeModel('gemini-1.5-pro-latest')
 @app.route('/api/generate-lyrics', methods=['GET'])
 def generate_lyrics():
     try:
-        # Select a random song from our list
         selected_song = random.choice(songs)
         song_title = selected_song['title']
         artist = selected_song['artist']
-
-        # Prompt for the LLM
+        
         prompt = f"""Generate a short, recognizable lyric snippet (2-4 lines) from the song "{song_title}" by {artist}."""
         print (prompt)
 
-        # Generate the lyrics using Gemini
         response = model.generate_content(prompt)
         print(response)
-        # Extract the lyric snippet from the response
         lyric_snippet = response.text.strip()
         print(lyric_snippet)
 
