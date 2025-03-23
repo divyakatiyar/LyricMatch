@@ -1,2 +1,0 @@
-# OpenAI API configuration
-GEMINI_API_TOKEN = "AIzaSyDNJxHXySaFYDHDG8uQBZ9nHqnUZlwBjrk"
