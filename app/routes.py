@@ -1,6 +1,7 @@
 # from transformers import AutoTokenizer, pipeline
 from flask import render_template, jsonify, request
 from app import app
+from config import GOOGLE_API_KEY
 from app.models import songs
 import random
 import requests
@@ -9,8 +10,6 @@ import google.generativeai as genai
 # from transformers import AutoTokenizer, AutoModelForCausalLM, AutoModelForMaskedLM
 # import torch
 
-
-GOOGLE_API_KEY = "AIzaSyAn07b5ai6EBzF-3WiTwScc9VJWO-23NOo" 
 genai.configure(api_key=GOOGLE_API_KEY)
 
 from flask import render_template, jsonify, request
